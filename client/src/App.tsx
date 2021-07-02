@@ -1,20 +1,19 @@
-import { GlobalStyle } from './style-guide/GlobalStyle'
-
-import * as S from './styles'
+import { GlobalStyle } from './styles/GlobalStyle'
+import { Header } from './components/Header'
+import { HiddenPokemon } from 'components/HiddenPokemon'
+import { Grid } from 'components/Grid'
+import { ApolloProvider } from '@apollo/client'
+import client from 'config/apollo-client'
 
 const App = () => (
-  <>
+  <ApolloProvider client={client}>
     <GlobalStyle />
-    <S.Container>
-      <S.Header>
-        <S.Logo />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <S.Link>Learn React</S.Link>
-      </S.Header>
-    </S.Container>
-  </>
+    <Header />
+    <div className="content">
+      <HiddenPokemon />
+      <Grid />
+    </div>
+  </ApolloProvider>
 )
 
-export default App
+export { App }
